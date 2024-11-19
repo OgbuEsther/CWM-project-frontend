@@ -1,47 +1,109 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
-import { GoPrimitiveDot } from "react-icons/go";
+import React, { useState } from "react";
+import { GrClose } from "react-icons/gr";
 import styled from "styled-components";
 import { getAllAdminMsg } from "../../Api/adminApi";
 
 const UserNotification = () => {
+  const [show, setShow] = useState<boolean>(false);
   const allAdminMsg = useQuery({
     queryKey: ["viewAdminMsg"],
     queryFn: getAllAdminMsg,
   });
 
-  console.log(`this is all client message ${allAdminMsg}`);
+  const toggleShow = () => {
+    setShow(!show);
+  };
+
+  // console.log(`this is all client message ${allAdminMsg}`);
   return (
     <div>
       <Top1>
         <Notify>
           <One>Notifications</One>
-          <Two>
-            <Read>
-              <GoPrimitiveDot />
-              <p> Read</p>
-            </Read>
-            <Unread>
-              <GoPrimitiveDot />
-              <p> Unread</p>
-            </Unread>
-          </Two>
         </Notify>
         <MsgHold>
           {allAdminMsg?.data?.data?.map((props: any) => (
-            <Msg>
-              <p>sender:{props?.sender} </p>
+            <Msg onClick={toggleShow}>
+              <p style={{ fontWeight: "600" }}>sender: {props?.sender} </p>
               <p>{props?.date} </p>
               <span>{props?.desc}</span>
             </Msg>
           ))}
         </MsgHold>
       </Top1>
+      {show ? (
+        <OpenMessage>
+          <span onClick={toggleShow}>
+            <GrClose style={{ color: "#fff" }} />
+          </span>
+          <MessageBox>
+            <h2>Message</h2>
+            <h3>From: Admin</h3>
+            <h4>Date:</h4>
+            <p>hdjhdjhjhd</p>
+          </MessageBox>
+        </OpenMessage>
+      ) : null}
     </div>
   );
 };
 
 export default UserNotification;
+
+const MessageBox = styled.div`
+  width: 40%;
+  height: 50vh;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 20px;
+
+  @media screen and (max-width: 768px) {
+    width: 88%;
+  }
+
+  h2 {
+    margin: 0;
+    font-weight: 600;
+    border-bottom: 1px solid #00000021;
+  }
+
+  h3 {
+    font-weight: 500;
+    margin: 0;
+    margin-top: 20px;
+  }
+
+  h4 {
+    margin: 0;
+    margin-top: 5px;
+    font-weight: 500;
+    font-size: 15px;
+  }
+`;
+
+const OpenMessage = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-color: #0000003c;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  span {
+    width: 50%;
+    right: 0;
+    font-size: 20px;
+    font-weight: 800;
+    cursor: pointer;
+  }
+`;
 
 const MsgHold = styled.div`
   overflow-y: scroll;
@@ -111,7 +173,7 @@ const Two = styled.div`
 `;
 
 const One = styled.div`
-  width: 40%;
+  width: 95%;
   height: 100%;
   color: black;
   font-weight: 600;
@@ -120,6 +182,7 @@ const One = styled.div`
   margin-left: 20px;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid rgba(226, 24, 24, 0.133);
 
   @media screen and (max-width: 768px) {
     font-size: 16px;
@@ -136,7 +199,8 @@ const Msg = styled.div`
   border-radius: 5px;
   margin-bottom: 10px;
   overflow-x: hidden;
-
+  background-color: #ff440018;
+  transition: all 0.2s ease;
   white-space: nowrap;
   max-width: calc(100% - 10px);
   text-overflow: ellipsis;
@@ -157,6 +221,11 @@ const Msg = styled.div`
     color: #45454b;
     font-size: 13px;
   }
+
+  :hover {
+    cursor: pointer;
+    background-color: #ff440025;
+  }
 `;
 
 const Notify = styled.div`
@@ -167,15 +236,16 @@ const Notify = styled.div`
 `;
 
 const Top1 = styled.div`
-  width: 52%;
+  width: 95%;
   height: 42vh;
   background-color: #ffffff;
   border-radius: 10px;
   margin: 10px;
   padding-bottom: 20px;
   box-shadow: rgba(0, 0, 0, 0.027) 1.95px 1.95px 2.6px;
+  position: relative;
 
   @media screen and (max-width: 768px) {
-    width: 95vw;
+    width: 92vw;
   }
 `;

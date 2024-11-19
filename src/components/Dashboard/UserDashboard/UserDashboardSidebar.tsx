@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import bill from "../../../Assets/bill.svg";
+import bill from "../../../Assets/bill.jpg";
 import card from "../../../Assets/eWasteCard.png";
 
 const UserDashboardSidebar = () => {
@@ -120,13 +120,12 @@ const Bottom2 = styled.div`
   }
 
   @media screen and (max-width: 768px) {
-    width: 95vw;
+    width: 92vw;
   }
 `;
 
 const Top2 = styled.div`
   width: 90%;
-  height: 50vh;
   background-color: #ffffff;
   border-radius: 10px;
   margin: 10px;
@@ -153,13 +152,14 @@ const Top2 = styled.div`
   }
 
   @media screen and (max-width: 768px) {
-    width: 95vw;
+    width: 92vw;
   }
 `;
 
 const Image = styled.div`
   height: 70%;
   width: 100%;
+  margin: 10px;
 
   img {
     width: 100%;

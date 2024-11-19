@@ -1,11 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import hero from "../../Assets/one.jpg";
-// import hero3 from "../../Assets/two.jpg";
+import hero from "../../Assets/one2.jpg";
+import hero3 from "../../Assets/hero3.jpg";
 import hero4 from "../../Assets/three.jpg";
-// import hero from "../../Assets/Waste_management.svg";
-import hero3 from "../../Assets/Waste_management3.svg";
-// import hero4 from "../../Assets/waste-management4.svg";
 import { FiArrowUpRight } from "react-icons/fi";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -19,7 +16,7 @@ const Hero = () => {
     infinite: true,
     slidesToShow: 1,
     autoplay: true,
-    autoplaySpeed: 4500,
+    autoplaySpeed: 5000,
     cssEase: "linear",
   };
 
@@ -28,7 +25,7 @@ const Hero = () => {
       <Container>
         <Wrapper>
           <Left>
-            <LeftWrapper height="70%">
+            <LeftWrapper height="60%">
               <Caption>waste management platform</Caption>
               <Title>
                 See garbage pick-up schedule and make payment for your waste
@@ -46,14 +43,18 @@ const Hero = () => {
             </LeftWrapper>
           </Left>
           <Right>
-            <LeftWrapper2>
-              <Slider {...settings}>
+            <Slider {...settings}>
+              <div>
                 <img src={hero} alt="" />
-
+              </div>
+              <div>
                 <img src={hero3} alt="" />
+              </div>
+
+              <div>
                 <img src={hero4} alt="" />
-              </Slider>
-            </LeftWrapper2>
+              </div>
+            </Slider>
           </Right>
         </Wrapper>
       </Container>
@@ -62,12 +63,6 @@ const Hero = () => {
 };
 
 export default Hero;
-
-const Img = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
 
 const Desc = styled.p`
   color: #00002d86;
@@ -82,7 +77,7 @@ const Button = styled.button`
   margin-top: 40px;
   font-size: 14.5px;
   border: 0;
-  background-color: #e21818;
+  background-color: #ff5f08;
   text-transform: capitalize;
   transition: all ease-in-out 0.2s;
   color: #fff;
@@ -90,13 +85,13 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   gap: 5px;
-  border: 1px solid #e21818;
+  border: 1px solid #ff5f08;
 
   :hover {
     cursor: pointer;
     background-color: transparent;
-    border: 1px solid #e21818;
-    color: #e21818;
+    border: 1px solid #ff5f08;
+    color: #ff5f08;
   }
 
   @media screen and (max-width: 768px) {
@@ -113,8 +108,8 @@ const Title = styled.h1`
   text-transform: capitalize;
 
   @media screen and (max-width: 768px) {
-    font-size: 2rem;
-    width: 85%;
+    font-size: 1.5rem;
+    width: 95%;
     margin-top: 20px;
   }
 `;
@@ -122,15 +117,14 @@ const Title = styled.h1`
 const Caption = styled.div`
   padding: 10px 20px;
   width: 250px;
-  background-color: #fff6f5;
-  color: #e21818;
+  background-color: #fff9f5;
+  color: #ff5f08;
   border-radius: 10px;
   font-weight: 500;
   text-transform: capitalize;
 
   @media screen and (max-width: 768px) {
     font-size: 14px;
-    width: 300px;
   }
 `;
 
@@ -142,52 +136,41 @@ const LeftWrapper = styled.div<{ height: string }>`
     height: ${({ height }) => height};
   }
 `;
-const LeftWrapper2 = styled.div`
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  background: rgb(226, 24, 24);
-  background: linear-gradient(
-    159deg,
-    rgba(226, 24, 24, 1) 63%,
-    rgba(253, 132, 31, 1) 100%
-  );
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
-  }
-
-  @media screen and (max-width: 768px) {
-    height: 100%;
-  }
-`;
 const Right = styled.div`
   width: 50%;
   height: 95vh;
-  background-color: #942b2b;
-  display: flex;
   align-items: center;
   justify-content: center;
 
   @media screen and (max-width: 768px) {
-    height: 55vh;
+    height: 50vh;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 30px;
   }
 
   @media screen and (max-width: 1440px) {
     min-width: 50%;
   }
+
+  img {
+    width: 100%;
+    height: 95vh;
+    object-fit: cover;
+
+    @media screen and (max-width: 768px) {
+      height: 50vh;
+      width: 100%;
+    }
+  }
 `;
 
 const Left = styled.div`
   width: 50%;
-  height: calc(100vh - 10vh);
+  height: 90vh;
   display: flex;
-  align-items: center;
-
+  justify-content: center;
+  flex-direction: column;
   @media screen and (max-width: 768px) {
     height: 60vh;
     width: 100%;
@@ -198,7 +181,6 @@ const Left = styled.div`
 `;
 const Wrapper = styled.div`
   width: 100%;
-  margin: auto;
   display: flex;
   flex-wrap: wrap;
 
@@ -210,4 +192,6 @@ const Container = styled.div`
   width: 100%;
   color: #00002d;
   margin-top: 70px;
+  position: relative;
+  top: 0;
 `;

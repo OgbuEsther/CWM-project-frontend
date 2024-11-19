@@ -10,7 +10,7 @@ const GetStarted = () => {
       <Container>
         <h1>
           It's easy to get started. <br /> click the button! <br />
-        </h1>{" "}
+        </h1>
         <span>👇🏼</span>
         <NavLink to="/signin" style={{ textDecoration: "none" }}>
           <button>
@@ -28,7 +28,7 @@ const Container = styled.div`
   width: 100%;
   height: 60vh;
   background-image: url(${bg});
-  background-color: #010116fa;
+  background-color: #000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,9 +61,9 @@ const Container = styled.div`
     padding: 13px 27px;
     font-size: 18px;
     margin-top: 20px;
-    background-color: #e21818;
+    background-color: #ff5f08;
     transition: all 0.3s ease;
-    border: 1px solid #e21818;
+    border: 1px solid #ff5f08;
     border-radius: 25px;
     display: flex;
     align-items: center;
@@ -71,8 +71,8 @@ const Container = styled.div`
     text-transform: capitalize;
 
     :hover {
-      border: 1px solid #e21818;
-      color: #e21818;
+      border: 1px solid #ff5f08;
+      color: #ff5f08;
       cursor: pointer;
       background-color: transparent;
       gap: 15px;
